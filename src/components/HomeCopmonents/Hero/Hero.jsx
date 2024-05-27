@@ -39,7 +39,7 @@ const Hero = () => {
 
   return (
     <Box>
-      <div className={classes.imagegrid} style={{ opacity: opacity, transition: 'opacity 0.5s linear' }}>
+      <div data-testid="imagegrid" className={classes.imagegrid} style={{ opacity: opacity, transition: 'opacity 0.5s linear' }}>
           {/* <div className={classes.contentWrapper}> */}
 
               <Box  className={classes.bannerContent} >

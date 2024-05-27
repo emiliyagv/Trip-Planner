@@ -72,6 +72,7 @@ function Review({ initialReviews }) {
         setLoading(false);
       };
 
+    
 
     useEffect(() => {
         const getData = async () => {
@@ -102,7 +103,7 @@ function Review({ initialReviews }) {
     
       
           getData();
-    }, [user])
+    }, [user, userReviews])
 
     useEffect(() => {
         console.log(images)
@@ -142,6 +143,10 @@ function Review({ initialReviews }) {
     }, [placeDetails])
 
     async function fetchPlaceDetails(placeId) {
+        if (!window.google || !window.google.maps) {
+            console.error('Google Maps API is not loaded');
+            return;
+          }
         const service = new window.google.maps.places.PlacesService(document.createElement('div'));
         service.getDetails({
             placeId: placeId,

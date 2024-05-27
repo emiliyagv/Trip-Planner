@@ -84,12 +84,10 @@ const Budget = ({budgetData, setBudgetData, expenses, setExpenses}) => {
 
   const addExpense = () => {
     const deductionAmount = parseFloat(amount);
-    console.log("is it")
     if (deductionAmount && category && spent >= deductionAmount) {
       const newSpent = spent - deductionAmount
       setSpent(newSpent);
       setBudgetData({budget, spent: newSpent})
-      console.log(`Adding ${amount} to ${category}`);
       setExpenses(prev => [...prev, { category, amount }]);
       handleClose();
       setAmount(''); 
@@ -231,7 +229,6 @@ const Budget = ({budgetData, setBudgetData, expenses, setExpenses}) => {
                   <Grid item>
                     <Typography variant="subtitle1">${expense.amount}</Typography>
                     <IconButton role="button" data-testid={`button-${index}`} edge="end" onClick={() => handleDeleteExpense(index)}>
-                 {console.log(`button-${index}`)}
                   <DeleteIcon />
                 </IconButton>
                   </Grid>

@@ -103,9 +103,9 @@ const Details = ({details, setDetails}) => {
     if (firstTime  >= secondTime) {
       if(selectedDetail === 'rental' ){
 
-      setErrorMessage('Check-in date should be smaller than checkout date.');
+      setErrorMessage('Check-in date should be earlier checkout date.');
       }else {
-        setErrorMessage('Departure time should be smaller than arrival time.');
+        setErrorMessage('Departure time should be earlier arrival time.');
 
       }
       return;
@@ -121,6 +121,7 @@ const Details = ({details, setDetails}) => {
       },
     };
     setDetails(newDetails);
+    setopenField(!openField)
   }
   const detailsConfig = {
     flight: {
@@ -228,27 +229,25 @@ const Details = ({details, setDetails}) => {
    <Typography variant="subtitle1">{details[selectedDetail][(detailsConfig[selectedDetail].fields)[0].name]}</Typography>
 
    
-   { selectedDetail.localeCompare('flights') == 0  &&
-   
-     <Typography variant="subtitle1">BUD &rarr; GYD</Typography>
-    }
+ 
      <Typography variant="body2">{details[selectedDetail][(detailsConfig[selectedDetail].fields)[1].name]}</Typography>
    </Box>
   
    <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 1 }}>
      <Typography variant="body2">{details[selectedDetail][(detailsConfig[selectedDetail].fields)[2].name]}</Typography>
-     { selectedDetail.localeCompare('flights') == 0  &&
+     { selectedDetail.localeCompare('flight') == 0  &&
 
-     <Typography variant="body2">Baku</Typography>
+     <Typography variant="body2">{details[selectedDetail][(detailsConfig[selectedDetail].fields)[selectedDetail === 'flight' ? 3 : 2].name]}</Typography>
     }
 
    </Box>
   
    <Typography variant="body2" gutterBottom>
    { 
-   convertToUserFormat(details[selectedDetail][(detailsConfig[selectedDetail].fields)[selectedDetail.localeCompare('flights') ==0 ? 4 : 3].name])}
+   convertToUserFormat(details[selectedDetail][(detailsConfig[selectedDetail].fields)[selectedDetail === 'flight' ? 4 : 3].name])}
 -
-{ convertToUserFormat(details[selectedDetail][(detailsConfig[selectedDetail].fields)[selectedDetail.localeCompare('flights') ==0 ? 5 : 4].name])}
+{ convertToUserFormat(details[selectedDetail][(detailsConfig[selectedDetail].fields)[selectedDetail === 'flight' ? 5 : 4].name])}
+  {console.log(selectedDetail)}
    </Typography>
  
  </Box>

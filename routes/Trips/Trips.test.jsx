@@ -87,6 +87,7 @@ describe('Trips component', () => {
   });
 });
   test('should show error for missing fields', async () => {
+    
     const { getByRole, getByText } = render(
       <Router>
         <ThemeProvider theme={theme}>
@@ -105,6 +106,7 @@ describe('Trips component', () => {
 
 
   test('should show error for invalid date range', async () => {
+  
     const { getByRole, getByText, getByPlaceholderText, getAllByText } = render(
       <Router>
         <ThemeProvider theme={theme}>

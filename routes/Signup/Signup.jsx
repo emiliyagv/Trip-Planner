@@ -4,8 +4,6 @@ import {useNavigate} from 'react-router-dom'
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
@@ -26,7 +24,6 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import {auth} from '../../src/config/firebase-config'
 import {GoogleAuthProvider, FacebookAuthProvider, TwitterAuthProvider, createUserWithEmailAndPassword, signInWithPopup, signInWithEmailAndPassword, signOut} from 'firebase/auth'
 import { setDoc,doc, getDoc } from "firebase/firestore"; 
-import { UserAuth } from '../../src/context/AuthContextProvider';
 
 import {db} from '../../src/config/firebase-config'
 
@@ -40,7 +37,6 @@ const Signup = () => {
   const [isSignup, setIsSignup] = useState(false)
   const [error, setError] = useState("")
   const navigate = useNavigate()
-  const { user } = UserAuth();
   const errors = {
     "auth/invalid-email" : "Email is not provided" ,
     "auth/missing-password" : "Password is not provided" ,
@@ -59,15 +55,10 @@ const Signup = () => {
     setPassword(event.target.value);
   };
 
-
-
-   
-
     const handleSubmitLogIn = (event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
           const email= data.get('email')
-         console.log(email, loginpassword)
          signInWithEmailAndPassword(auth, email, loginpassword)
          .then((userCredentials) =>
          {
@@ -76,7 +67,7 @@ const Signup = () => {
            navigate('/');
 
          }).catch((error) => {
-          setError(errors[error.code])
+          setError(errors[error.code] || 'An unexpected error occurred')
       })
       };
 
@@ -148,10 +139,6 @@ const Signup = () => {
     ;
   
       };
-
-
- 
-   
 
   return (
     
@@ -231,13 +218,7 @@ const Signup = () => {
               
                 </Grid>
                 </Box>
-                {/* <Grid item xs={12} sx={{ mt: 12 }}>
-
-                <FormControlLabel
-                  control={<Checkbox value="remember" color="primary" />}
-                  label="Remember me"
-                />
-                </Grid> */}
+               
                 </Grid>
 
                 <Button
@@ -322,12 +303,12 @@ const Signup = () => {
           <Grid item xs={12} sm={6}>
             <TextField
               onChange={(e) => {setError('')}}
+              label="First Name"
               autoComplete="given-name"
               name="firstName"
               required
               fullWidth
               id="firstName"
-              label="First Name"
               autoFocus
             />
           </Grid>

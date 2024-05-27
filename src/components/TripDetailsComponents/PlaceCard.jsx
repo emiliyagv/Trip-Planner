@@ -29,7 +29,7 @@ const PlaceCard = ({places, handleAddPlace, handleDelete}) => {
    
       const NextArrow = ({ onClick, ...props }) => {
      const isLastSlide = currentslide >= (places.length - sliderSettings.slidesToShow);      return !isLastSlide && (
-          <Button {...props} onClick={onClick} style={{
+          <Button data-testid="NextArrow"  {...props} onClick={onClick} style={{
             ...props.style,
           marginRight: "30px",
           position: "absolute",
@@ -60,7 +60,7 @@ const PlaceCard = ({places, handleAddPlace, handleDelete}) => {
       
       const PrevArrow = ({ onClick, ...props }) => {
         return currentslide !== 0 && (
-          <Button {...props} onClick={onClick} style={{
+          <Button data-testid="PrevArrow"  {...props} onClick={onClick} style={{
             ...props.style,
             marginLeft: "20px",
             position: "absolute",
@@ -128,7 +128,7 @@ const PlaceCard = ({places, handleAddPlace, handleDelete}) => {
 
   return (
     places.length > 0 && (
-        <Slider ref={sliderRef} {...sliderSettings} className={classes.slider}>
+        <Slider data-testid="slick-list"  ref={sliderRef} {...sliderSettings} className={classes.slider}>
   
             { places?.slice(0,10).map((item, index) => (
             <Card key={item.imageUrl + index} className={classes.card}>
@@ -165,7 +165,7 @@ const PlaceCard = ({places, handleAddPlace, handleDelete}) => {
                     )}
                  {handleDelete && (
                 <>
-                <IconButton onClick={() => handleDelete(index)} sx={{ marginLeft: 'auto' }}>
+                <IconButton onClick={() => handleDelete(index)} data-testid="delete-button" sx={{ marginLeft: 'auto' }}>
                         <DeleteIcon />
                 </IconButton>
                 </>

@@ -61,10 +61,10 @@ describe('Hero component', () => {
   test('changes opacity on scroll', () => {
     renderWithProviders(<Hero />);
 
-    const imageGrid = screen.getByAltText('');
+    const imageGrid = screen.getByTestId('imagegrid');
     expect(imageGrid).toHaveStyle('opacity: 1');
 
-    fireEvent.scroll(window, { target: { pageYOffset: 500 } });
+    fireEvent.scroll(window, { target: { pageYOffset: 576 } });
 
     expect(imageGrid).toHaveStyle('opacity: 0.5');
   });

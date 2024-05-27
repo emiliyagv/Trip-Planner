@@ -63,7 +63,8 @@ const Places = ({ userPlaces, setUserPlaces, date, isDateSpecific = false }) => 
 
     const handleSubmit = (event) => {
       event.preventDefault();
-      if (!Array.isArray(userPlaces) || userPlaces.length ==0) {
+      if (!Array.isArray(userPlaces) ) {
+        console.log(userPlaces)
           console.error('Expected userPlaces to be an array, but received:', userPlaces);
           return; 
       }
@@ -87,10 +88,7 @@ const Places = ({ userPlaces, setUserPlaces, date, isDateSpecific = false }) => 
     }
 
     };
-    useEffect(() => {
-        console.log(userPlaces)
-        }, [userPlaces])
-        
+   
     const handleDelete = (indexToDelete) => {
         setUserPlaces(userPlaces.filter((_, index) => index !== indexToDelete));
     };

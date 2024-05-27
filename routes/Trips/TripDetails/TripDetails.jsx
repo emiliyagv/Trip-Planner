@@ -44,6 +44,7 @@ const TripDetails = () => {
 
   async function getPlaces(type, sw, ne) {
 
+    console.log("locs",sw, ne)
     const docRef = doc(db, type,`${parseInt(sw.lat)},${parseInt(sw.lng)},${parseInt(ne.lng)},${parseInt(ne.lat)}`);
     const docSnap = await getDoc(docRef);
 
@@ -62,8 +63,10 @@ const TripDetails = () => {
         console.error("No destination provided");
         return; 
     }
-      const urldest = data?.destination ?? data?.tripData?.title
+      const urldest = data?.destination ?? data?.tripData?.title.split(" ")[2]
+      console.log(urldest)
       const url = `https://api.maptiler.com/geocoding/${urldest}.json?key=nmO3tm51a8nrPeztTcc7`;
+      console.log(url)
       try {
         const response = await fetch(url);
         const data = await response.json();
@@ -71,7 +74,7 @@ const TripDetails = () => {
         if (firstResult) {
           const { coordinates } = firstResult.geometry;
           const newCoordinates = { lng: coordinates[0], lat: coordinates[1] };
-
+      
           if (
             newCoordinates.lng !== coordinates.lng ||
             newCoordinates.lat !== coordinates.lat
@@ -122,12 +125,12 @@ const TripDetails = () => {
   useEffect(() => {
     setExploreItems(places
     .filter(place => place.photo).map(place => ({
-      title: place.name,
-      imageUrl: place.photo?.images.large.url,
-      location: place.address,
-      rating: place.rating,
-      cuisine: place.cuisine,
-      website: place.website,
+      title: place.name || " ",
+      imageUrl: place.photo?.images.large.url || " ",
+      location: place.address || " ",
+      rating: place.rating || " ",
+      cuisine: place.cuisine || " ",
+      website: place.website || " ",
     })));
   }, [places]); 
 
