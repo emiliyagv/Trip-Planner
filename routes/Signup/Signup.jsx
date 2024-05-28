@@ -37,6 +37,7 @@ const Signup = () => {
   const [isSignup, setIsSignup] = useState(false)
   const [error, setError] = useState("")
   const navigate = useNavigate()
+
   const errors = {
     "auth/invalid-email" : "Email is not provided" ,
     "auth/missing-password" : "Password is not provided" ,
@@ -63,7 +64,6 @@ const Signup = () => {
          .then((userCredentials) =>
          {
            const user = userCredentials.user
-           console.log(user)
            navigate('/');
 
          }).catch((error) => {
@@ -91,15 +91,12 @@ const Signup = () => {
         .then(async (result) => {
           const credential = GoogleAuthProvider.credentialFromResult(result);
           const user = result.user;
-
           const userRef = doc(db, "users", user.uid);
           const docSnap = await getDoc(userRef);
           if (docSnap.exists()) {
             navigate('/')
             return
           }
-
-
          await setDoc(doc(db, "users", user.uid ), {
             name: user.displayName,
             email :  user.email,
@@ -123,7 +120,7 @@ const Signup = () => {
           setError(errors['noname'])
           return;
          }
-        createUserWithEmailAndPassword(auth, email, password)
+      createUserWithEmailAndPassword(auth, email, password)
         .then((userCredentials) =>
         {
           const user = userCredentials.user

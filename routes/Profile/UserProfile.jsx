@@ -104,7 +104,6 @@ const UserProfile = () => {
        
           const docRef = doc(db, "users", user.uid);
           const docSnap = await getDoc(docRef);
-          console.log(docSnap.data().name)
           if (docSnap.exists()) {
             setName(docSnap.data().name || '');
             setEmail(docSnap.data().email || '');
@@ -150,8 +149,6 @@ const UserProfile = () => {
               email: email,
               photoURL: newPhotoUrl
           });
-  
-          console.log("Profile updated successfully");
       } catch (error) {
           console.error("Error updating profile:", error);
       }

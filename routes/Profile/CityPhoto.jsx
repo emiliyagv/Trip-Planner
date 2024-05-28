@@ -11,7 +11,6 @@ const CityPhoto = ({ google, cityName }) => {
     placesService.findPlaceFromQuery({ query: cityName, fields: ['photos'] }, (results, status) => {
       if (status === google.maps.places.PlacesServiceStatus.OK && results && results.length > 0) {
         const place = results[0];
-
         if (place.photos && place.photos.length > 0) {
           const photoReference = place.photos[0].getUrl({ maxWidth: 400, maxHeight: 300 });
           setPhotoUrl(photoReference);
@@ -30,7 +29,6 @@ const CityPhoto = ({ google, cityName }) => {
 
   return (
     <div>
-      {/* Render CardMedia with the fetched photo URL */}
       {photoUrl && (
         <CardMedia
           component="img"

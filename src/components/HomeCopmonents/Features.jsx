@@ -69,7 +69,6 @@ const Features = () => {
               Manage your budget
             </Typography>
          
-            {/* <StyledButton variant="outlined">Add to plan</StyledButton> */}
           </Item>
         </Grid>
         <Grid item xs={12} md={6}>
@@ -79,9 +78,7 @@ const Features = () => {
             <Typography variant="h6" gutterBottom>
               Plan your Itinerary
               </Typography>
-            {/* <Typography variant="body1">
-              We crawled the web so you don’t have to. Easily save mentioned places.
-            </Typography> */}
+
           </Item>
         </Grid>
         <Grid item xs={12} md={6}>
@@ -91,9 +88,7 @@ const Features = () => {
             <Typography variant="h6" gutterBottom>
                 Get recommendations from us
             </Typography>
-            {/* <Typography variant="body1">
-              We crawled the web so you don’t have to. Easily save mentioned places.
-            </Typography> */}
+
           </Item>
         </Grid>
 

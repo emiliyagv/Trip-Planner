@@ -32,7 +32,7 @@ const places = [
 const swipeEvent = new CustomEvent('swipe', {
   bubbles: true,
   cancelable: true,
-  detail: { deltaX: 100 } // You can adjust deltaX as needed
+  detail: { deltaX: 100 } 
 });
 const mockHandleAddPlace = jest.fn();
 const mockHandleDelete = jest.fn();

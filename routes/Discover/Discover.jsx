@@ -29,68 +29,6 @@ function Discover() {
     });
 
 
-
-    // useEffect(() => {
-    //     const fetchCoordinates = async () => {
-      
-    //       console.log(urldest)
-    //       const url = `https://api.maptiler.com/geocoding/${search.split()[0]}.json?key=nmO3tm51a8nrPeztTcc7`;
-    //       console.log(url)
-    //       try {
-    //         const response = await fetch(url);
-    //         const data = await response.json();
-    //         const firstResult = data.features[0];
-    //         if (firstResult) {
-    //           const { coordinates } = firstResult.geometry;
-    //           const newCoordinates = { lng: coordinates[0], lat: coordinates[1] };
-          
-    //           if (
-    //             newCoordinates.lng !== coordinates.lng ||
-    //             newCoordinates.lat !== coordinates.lat
-    //           ) {
-    //             setCoordinates(newCoordinates);
-    //           const featureType = firstResult.place_type[0];
-    //           switch (featureType) {
-    //             case 'country':
-    //               setZoom(4);
-    //               break;
-    //             case 'region':
-    //               setZoom(12);
-    //               break;
-    //             case 'city':
-    //               setZoom(12);
-    //               break;
-    //             default:
-    //               setZoom(12);
-    //           }
-        
-    //           return { sw: { lng: coordinates[0], lat: coordinates[1] }, ne: { lng: coordinates[0], lat: coordinates[1] } }; 
-    //         }
-    //       }
-    //       } catch (error) {
-    //         console.error("Failed to fetch coordinates", error);
-    //       }
-    //     };
-        
-        // const loadData = async () => {
-        //   const bounds = await fetchCoordinates();  
-        //   if (bounds) {
-        //     getPlaces("restaurants", bounds.sw, bounds.ne)
-        //       .then((data) => {
-        //         setPlaces(data);  
-        //       })
-        //       .catch((error) => {
-        //         console.error("Failed to fetch places:", error);
-        //       });
-        //   }
-        // };
-        
-        // loadData();
-     
-    //   }, [search]);
-    
-
-
     useEffect(() => {
         navigator.geolocation.getCurrentPosition(function(position) {
             let latitude = position.coords.latitude;
@@ -135,18 +73,12 @@ function Discover() {
     const handleSearch = async () => {
         const url = `https://api.maptiler.com/geocoding/${search.split(",", 1)[0]}.json?key=nmO3tm51a8nrPeztTcc7`;
        
-       console.log(search.split(",", 1)[0])
         const response = await fetch(url);
         const data = await response.json();
         const firstResult = data.features[0];
         if (firstResult) {
             const { coordinates } = firstResult.geometry;
             setCoordinates({ lng: coordinates[0], lat: coordinates[1] });
-
-            // const featureType = firstResult.place_type[0];
-
-            // setZoom(featureType === 'country' ? 4 : featureType === 'city' ? 12 : 8);
-            // console.log(featureType)
         }
     };
 

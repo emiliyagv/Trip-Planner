@@ -23,36 +23,35 @@ const ForgotPassword = () => {
  }
   return (
  <Container>
-<Grid item xs={12}>
-
-<Box sx={{ display: 'flex', margin:"auto", justifyContent: 'center', marginTop: '8rem', width: '100%', minHeight: '80vh' }}>
-  <Paper elevation={3} sx={{ p: 48,height:"30%", width: isSmallScreen ? '80%' : '45%', textAlign: 'center' }}>
-    <FontAwesomeIcon icon={faAngleLeft} style={{ marginRight: '0.5rem' }} />
-    <Link to='/Signup' style={{ color: '#6c757d', textDecoration: 'none' }}>Back to sign in</Link>
-    <Typography variant="h5" component="h2" mt={3} mb={4}>
-      Forgot your password?
-    </Typography>
-    <Typography variant="body1" mb={4}>
-      Don't worry! Just type in your email and we will send you a code to reset your password!
-    </Typography>
-    <Box component="form" noValidate onSubmit={handleSubmit}>
-      <TextField
-        margin="normal"
-        required
-        fullWidth
-        id="email"
-        label="Your Email"
-        name="email"
-        autoComplete="email"
-        autoFocus
-      />
-      <Button variant="contained"  type="submit" className={classes.buttons} fullWidth sx={{ mt: 3, mb: 2, bgcolor: 'primary.main', color: 'primary.contrastText' }}>
-        Recover password
-      </Button>
+  <Grid item xs={12}>
+    <Box sx={{ display: 'flex', margin:"auto", justifyContent: 'center', marginTop: '8rem', width: '100%', minHeight: '80vh' }}>
+      <Paper elevation={3} sx={{ p: 48,height:"30%", width: isSmallScreen ? '80%' : '45%', textAlign: 'center' }}>
+        <FontAwesomeIcon icon={faAngleLeft} style={{ marginRight: '0.5rem' }} />
+        <Link to='/Signup' style={{ color: '#6c757d', textDecoration: 'none' }}>Back to sign in</Link>
+          <Typography variant="h5" component="h2" mt={3} mb={4}>
+              Forgot your password?
+          </Typography>
+          <Typography variant="body1" mb={4}>
+            Don't worry! Just type in your email and we will send you a code to reset your password!
+          </Typography>
+          <Box component="form" noValidate onSubmit={handleSubmit}>
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              id="email"
+              label="Your Email"
+              name="email"
+              autoComplete="email"
+              autoFocus
+            />
+            <Button variant="contained"  type="submit" className={classes.buttons} fullWidth sx={{ mt: 3, mb: 2, bgcolor: 'primary.main', color: 'primary.contrastText' }}>
+              Recover password
+            </Button>
+          </Box>
+      </Paper>
     </Box>
-  </Paper>
-</Box>
-</Grid>
+  </Grid>
 </Container> 
 
     )

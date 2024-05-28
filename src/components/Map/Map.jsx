@@ -11,7 +11,6 @@ export default function MapComp({places, setCoordinates, setBounds, coordinates,
   const map = useRef(null);
 
   useEffect(() => {
-    
     if (!MAPTILER_API_KEY) {
       console.error('MapTiler API key is missing');
       return;

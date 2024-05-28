@@ -17,25 +17,7 @@ const List = ({places, type, setType, rating, setRating, isLoading}) => {
                 </div>
             ) : (
                 <>
-        {/* <div className={classes.formdiv}>
-            <FormControl >
-                <InputLabel className={classes.formcontrol}>Type</InputLabel>
-                <Select value={type} onChange={(e) => setType(e.target.value)} label="Type">
-                    <MenuItem value="restaurants">Restaurants</MenuItem>
-                    <MenuItem value="hotels">Hotels</MenuItem>
-                    <MenuItem value="attractions">Attractions</MenuItem>
-                </Select>
-            </FormControl>
-            <FormControl >
-                <InputLabel className={classes.formcontrol}>Rating</InputLabel>
-                <Select value={rating} onChange={(e) => setRating(e.target.value)} label="Rating">
-                    <MenuItem value={0}>All</MenuItem>
-                    <MenuItem value={3}>Above 3.0</MenuItem>
-                    <MenuItem value={4}>Above 4.0</MenuItem>
-                    <MenuItem value={4.5}>Above 4.5</MenuItem>
-                </Select>
-            </FormControl>
-            </div> */}
+      
         <Grid container spacing={8}>
         {Object.entries(places).map(([key, val]) =>(
             <><Typography variant="h5" marginLeft="1em" marginTop="1em">{(key == "restaurants") ? "Restaurants": ((key=="hotels" )? "Hotels" : "Attractions")}</Typography>

@@ -24,6 +24,7 @@ const Trips = () => {
     const endDate = formRef.current.elements['endDate'].value;
     const start = new Date(startDate);
     const end = new Date(endDate);
+    
     if (!destination || !startDate || !endDate) {
       setErrors({
         hasError: true,

@@ -42,7 +42,7 @@ function Footer() {
             </Typography>
           </Grid>
         </Grid>
-        <Divider sx={{ my: 4 }} /> {/* Adds a horizontal line */}
+        <Divider sx={{ my: 4 }} /> 
         <Grid marginTop="2em" container spacing={4} justifyContent='space-between' alignItems='center'>
           <Grid item xs={12} sm={4} lg={9}> 
           <Typography variant="h6">Trip Planner</Typography>

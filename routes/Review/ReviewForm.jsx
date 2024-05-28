@@ -39,8 +39,6 @@ const ReviewForm = ({ onSubmit, onCancel, placeDetails, setPlaceDetails }) => {
 
     const handleFormSubmit = async (e) => {
         e.preventDefault();
-        
-      
         const reviewId = `review_${Date.now()}`;
         if(photo ==null) return;
     
@@ -59,7 +57,6 @@ const ReviewForm = ({ onSubmit, onCancel, placeDetails, setPlaceDetails }) => {
             const docSnap = await getDoc(userReviewsRef);
             if (docSnap.exists()) {
                 if (reviewData){
-                    console.log(reviewData)
                 await updateDoc(userReviewsRef, {
                     reviews: arrayUnion(reviewData)
                 });
@@ -67,7 +64,6 @@ const ReviewForm = ({ onSubmit, onCancel, placeDetails, setPlaceDetails }) => {
             } else {
                 await setDoc(userReviewsRef, { reviews: [reviewData] });
             }
-            console.log("Review added successfully");
             setPlaceDetails({})
             onCancel(); 
         } catch (error) {

@@ -44,7 +44,6 @@ const TripDetails = () => {
 
   async function getPlaces(type, sw, ne) {
 
-    console.log("locs",sw, ne)
     const docRef = doc(db, type,`${parseInt(sw.lat)},${parseInt(sw.lng)},${parseInt(ne.lng)},${parseInt(ne.lat)}`);
     const docSnap = await getDoc(docRef);
 
@@ -64,9 +63,7 @@ const TripDetails = () => {
         return; 
     }
       const urldest = data?.destination ?? data?.tripData?.title.split(" ")[2]
-      console.log(urldest)
       const url = `https://api.maptiler.com/geocoding/${urldest}.json?key=nmO3tm51a8nrPeztTcc7`;
-      console.log(url)
       try {
         const response = await fetch(url);
         const data = await response.json();
@@ -177,39 +174,21 @@ function cleanObject(obj) {
 }
 
 const handleSave = async () => {
-  console.log(expenses)
-
   const tripId = tripData.tripId;
-  const tripDetails = {
-      tripId,
-      tripData,
-      budgetData,
-      expenses,
-      userPlaces,
-      details,
-      itineraryPlaces,
+  const tripDetails = {tripId, tripData, budgetData, expenses, userPlaces, details, itineraryPlaces,
   };
-  console.log(tripDetails)
-
   const cleanTripDetails = cleanObject(tripDetails);
-
-  console.log("Cleaned Trip Details:", JSON.stringify(cleanTripDetails, null, 2)); 
-
   try {
       const userRef = doc(db, "users", user.uid);
       const userDoc = await getDoc(userRef);
       const userData = userDoc.data();
       const userTrips = userData?.trips || [];
-
       const tripIndex = userTrips.findIndex((trip) => trip.tripId === tripId);
-
       if (tripIndex >= 0) {
           const updatedTrips = [...userTrips];
           updatedTrips[tripIndex] = cleanTripDetails;
-          console.log("Updating existing trip:", updatedTrips[tripIndex]);
           await updateDoc(userRef, { trips: updatedTrips });
       } else {
-          console.log("Adding new trip:", cleanTripDetails);
           await updateDoc(userRef, { trips: arrayUnion(cleanTripDetails) });
       }
 

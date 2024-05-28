@@ -4,8 +4,6 @@ import TrendingPlaces from "../../src/components/HomeCopmonents/TrendingPlaces";
 
 function Home (){
     return (
-
-     
         <><Hero />
         <Features />
         <TrendingPlaces/>

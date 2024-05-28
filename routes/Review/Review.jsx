@@ -77,7 +77,6 @@ function Review({ initialReviews }) {
     useEffect(() => {
         const getData = async () => {
             if (user?.uid) {
-
               const docRef = doc(db, "reviews", user.uid);
               const docSnap = await getDoc(docRef);
         
@@ -134,7 +133,6 @@ function Review({ initialReviews }) {
                     ))}
                 });
             }
-
                 if(selectedReviews.length > 0) setUserReviews(selectedReviews.flat())
                 }
     
@@ -173,7 +171,6 @@ function Review({ initialReviews }) {
             oldreviews.splice(indexToDelete, 1)
             setUserReviews(oldreviews)
             const userRef = doc(db, "reviews",  user.uid);
-
             await updateDoc(userRef, {
                 reviews : oldreviews,
               });
@@ -195,7 +192,6 @@ function Review({ initialReviews }) {
   };
 
   const handleReviewFormSubmit = (reviewData) => {
-      console.log('Review Submitted:', reviewData);
       setShowReviewForm(false); 
   };
 

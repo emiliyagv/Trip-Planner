@@ -40,7 +40,6 @@ const Hero = () => {
   return (
     <Box>
       <div data-testid="imagegrid" className={classes.imagegrid} style={{ opacity: opacity, transition: 'opacity 0.5s linear' }}>
-          {/* <div className={classes.contentWrapper}> */}
 
               <Box  className={classes.bannerContent} >
                   
@@ -59,7 +58,6 @@ const Hero = () => {
                     </Box>
               </Box>
 
-              {/* </div> */}
             <img src="/images/LandingPageHero__foreground.png" alt="" className={classes.backgroudImage}/>
             <img src="/images/4798227.jpg" alt="" className={classes.bannerImage}/>
             

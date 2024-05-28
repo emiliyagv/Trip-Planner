@@ -89,7 +89,6 @@ const Navbar = ({setCoordinates}, props) => {
        
           const docRef = doc(db, "users", user.uid);
           const docSnap = await getDoc(docRef);
-          console.log(docSnap.data().name)
           if (docSnap.exists()) {
            
             setProfilePhoto(docSnap.data().photoURL || '');

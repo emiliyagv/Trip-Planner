@@ -64,7 +64,6 @@ const Places = ({ userPlaces, setUserPlaces, date, isDateSpecific = false }) => 
     const handleSubmit = (event) => {
       event.preventDefault();
       if (!Array.isArray(userPlaces) ) {
-        console.log(userPlaces)
           console.error('Expected userPlaces to be an array, but received:', userPlaces);
           return; 
       }
@@ -78,7 +77,6 @@ const Places = ({ userPlaces, setUserPlaces, date, isDateSpecific = false }) => 
         date: isDateSpecific ? date : "" 
     };
     if(isDateSpecific) {
-        console.log(userPlaces)
        const newPlaces = [...userPlaces, newPlace];
        setUserPlaces(newPlaces)
 
